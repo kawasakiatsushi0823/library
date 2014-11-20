@@ -1,0 +1,13 @@
+= form_for @message, html: { class: "form form-horizontal message" } do |f|
+  .form-group
+    = f.label :title, class: 'control-label'
+    .controls
+      = f.text_field :title, class: 'form-control', required: true
+    = error_span(@message[:title])
+  .form-group
+    = f.label :context, class: 'control-label'
+    .controls
+      = f.text_field :context, class: 'form-control', required: true
+    = error_span(@message[:context])
+  = f.submit nil,class: 'btn btn-primary'
+  = link_to t('.cancel', :default => t("helpers.links.cancel")), messages_path, :class => 'btn btn-default'

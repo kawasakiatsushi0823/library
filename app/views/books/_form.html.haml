@@ -1,0 +1,19 @@
+= form_for @book, html: { class: "form form-horizontal message" } do |f|
+  .form-group
+    = f.label :title, class: 'control-label'
+    .controls
+      = f.text_field :title, class: 'form-control', required: true
+    =error_span(@book[:title])
+  .form-group
+    = f.label :status, class: 'control-label'
+    .controls
+      = f.select :status, Book::STATUS, class: 'form-control', required: true
+    =error_span(@book[:title])
+  =f.fields_for :editions do |i|
+    .form-group
+      =i.label :type, class: 'control-label'
+      .controls
+        =i.text_field :type, class: 'form-control', required: true
+
+  = f.submit '作成する', class: 'btn btn-primary'
+  = link_to 'キャンセル', books_path, class: 'btn btn-default'
