@@ -1,4 +1,13 @@
 class Edition < ActiveRecord::Base
   belongs_to :book
-  self.inheritance_column = :_type_disabled
+
+  #validates :book_id, presence: true
+  validates :kind, presence: true
+  validate :kind_is_not_zero
+
+  private
+
+  def kind_is_not_zero
+  	errors.add(:kind, 'is not 0') if kind == '0'
+  end
 end

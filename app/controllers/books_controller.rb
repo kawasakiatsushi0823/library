@@ -21,16 +21,18 @@ class BooksController < ApplicationController
 
   def edit
     @book = Book.find(params[:id])
+    @book.editions.build
   end
 
   def update
     @book = Book.find(params[:id])
-    @book.editions.build
+    #@book.editions
 
     if @book.update_attributes(book_params)
       respond_with @book, location: books_path
     else
-      respond_with @book.errors, location: book_edit_path
+      render 'edit'
+      #respond_with @book.errors, location: book_edit_path
     end
   end
 
@@ -47,7 +49,8 @@ class BooksController < ApplicationController
 
   private
     def book_params
-      params.require(:book).permit(:title, :status, {editions_attributes: [:id, :book_id, :type]},)
+      puts params
+      params.require(:book).permit(:title, :status, {editions_attributes: [:id, :book_id, :kind]},)
     end
 
 end

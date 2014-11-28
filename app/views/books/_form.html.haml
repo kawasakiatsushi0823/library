@@ -10,10 +10,12 @@
       = f.select :status, Book::STATUS, class: 'form-control', required: true
     =error_span(@book[:title])
   =f.fields_for :editions do |i|
+    //formの追加
     .form-group
-      =i.label :type, class: 'control-label'
+      =i.label :kind, class: 'control-label', required: true
       .controls
-        =i.text_field :type, class: 'form-control', required: true
+        =i.text_field :kind, class: 'form-control'
+    //= i.link_to_add 'Add', :editions
 
   = f.submit '作成する', class: 'btn btn-primary'
   = link_to 'キャンセル', books_path, class: 'btn btn-default'
