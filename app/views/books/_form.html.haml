@@ -4,18 +4,17 @@
     .controls
       = f.text_field :title, class: 'form-control', required: true
     =error_span(@book[:title])
-  .form-group
-    = f.label :status, class: 'control-label'
-    .controls
-      = f.select :status, Book::STATUS, class: 'form-control', required: true
-    =error_span(@book[:title])
   =f.fields_for :editions do |i|
     //formの追加
     .form-group
       =i.label :kind, class: 'control-label', required: true
       .controls
         =i.text_field :kind, class: 'form-control'
-    //= i.link_to_add 'Add', :editions
+    =i.fields_for :book_numbers do |book_number|
+      .form-group
+        =book_number.label :status, class: 'control-label'
+        .controls
+          =book_number.number_field :status, class: 'form-control'
 
   = f.submit '作成する', class: 'btn btn-primary'
   = link_to 'キャンセル', books_path, class: 'btn btn-default'

@@ -1,0 +1,27 @@
+.page_header
+  %h1 book_detail
+
+%p
+  %strong= Book.human_attribute_name(:title)
+  %br
+  = @book.title
+%p
+  %strong= Book.human_attribute_name(:title)
+  %br
+  = @book.title
+%p
+  %strong= Book.human_attribute_name(:edition)
+- @book.editions.each do |edition|
+  = edition.kind
+  %br
+  貸出可能数
+  = edition.book_numbers.on_loan.count
+  \/
+  = edition.book_numbers.count
+  冊
+  %br
+
+
+
+
+

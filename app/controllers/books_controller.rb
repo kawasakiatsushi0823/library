@@ -5,6 +5,10 @@ class BooksController < ApplicationController
     @books = Book.active_books
   end
 
+  def show
+    @book = Book.find params[:id]
+  end
+
   def new
     @book = Book.new
     @book.editions.build
