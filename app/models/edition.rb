@@ -1,5 +1,6 @@
 class Edition < ActiveRecord::Base
   belongs_to :book
+  has_many :book_numbers
 
   #validates :book_id, presence: true
   validates :kind, presence: true

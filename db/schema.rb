@@ -11,11 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141121105003) do
+ActiveRecord::Schema.define(version: 20141207073513) do
+
+  create_table "book_numbers", force: true do |t|
+    t.integer  "edition_id"
+    t.integer  "status"
+    t.datetime "deleted_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "books", force: true do |t|
     t.string   "title"
-    t.integer  "status"
     t.datetime "deleted_at"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -29,9 +36,19 @@ ActiveRecord::Schema.define(version: 20141121105003) do
     t.datetime "updated_at"
   end
 
-  create_table "messages", force: true do |t|
-    t.string   "title"
-    t.string   "context"
+  create_table "lendings", force: true do |t|
+    t.integer  "member_id"
+    t.integer  "book_number_id"
+    t.integer  "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "members", force: true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "password"
+    t.datetime "deleted_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

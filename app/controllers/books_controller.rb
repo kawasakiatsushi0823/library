@@ -2,7 +2,7 @@ class BooksController < ApplicationController
   respond_to :html
 
   def index
-    @books = Book.where(deleted_at: nil)
+    @books = Book.active_books
   end
 
   def new
