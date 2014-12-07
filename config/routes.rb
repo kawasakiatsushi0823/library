@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :books do
     post 'delete'
   end
+  get '/deleted_books' => 'books#deleted_books', as: :deleted_books
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

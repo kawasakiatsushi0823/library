@@ -46,6 +46,9 @@ class BooksController < ApplicationController
     end
   end
 
+  def deleted_books
+    @books = Book.where('deleted_at IS NOT NULL')
+  end
 
   private
     def book_params
